@@ -1,7 +1,7 @@
 import { Endereco } from './endereco';
 
 export class Consultoria{
-    _id:string = '';
+    id:string = '';
     cnpj:string = '';
     nomeFantasia:string = '';
     razaoSocial:string = '';
@@ -20,7 +20,7 @@ export class Consultoria{
             //cria uma instancia de consultoria
             let consultoria = Object.create(Consultoria.prototype);
             
-            consultoria._id = json._id;
+            consultoria.id = json.id;
             consultoria.cnpj = json.cnpj;
             consultoria.nomeFantasia = json.nomeFantasia;
             consultoria.razaoSocial = json.razaoSocial;
@@ -39,7 +39,7 @@ export class Consultoria{
 }
 
 interface ConsultoriaJSON {
-    _id:string;
+    id:string;
     cnpj:string;
     nomeFantasia:string;
     razaoSocial:string;

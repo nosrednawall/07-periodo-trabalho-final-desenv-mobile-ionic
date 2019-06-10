@@ -6,7 +6,7 @@
 
 <ion-content>
     <ion-list approxItemHeight="320px">
-      <div *ngFor=" let consultoria of dataSource">
+      <div *ngFor=" let consultoria of consultorias">
         <ion-card (click)="opcoesCardConsultoria(consultoria)">
           <ion-card-header>
             <ion-card-subtitle>Especialista em {{ consultoria.areaFoco }}</ion-card-subtitle>

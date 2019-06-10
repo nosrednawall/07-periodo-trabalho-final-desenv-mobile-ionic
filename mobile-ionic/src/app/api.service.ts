@@ -22,18 +22,14 @@ export class ApiService {
   constructor(private http: HttpClient, private storage: Storage) { 
         // busco o valor do endereço salvo no storage   
         storage.get('servidor').then((val) => {
-          console.log('o endereco do servidor é: ', val);
           this.enderecoServidor = this.enderecoServidor === val ? this.enderecoServidor : val;
         });
-
-        // this.apiUrl = this.enderecoServidor+'/rest/rest/consultoria';
-        console.log(this.apiUrl);
   }
 
   getConsultorias (): Observable<Consultoria[]> {
     return this.http.get<Consultoria[]>(this.apiUrl+'/lista')
       .pipe(
-        tap(consultorias => console.log('leu as consultorias')),
+        tap(consultorias => console.log('leu as consultorias ')),
         catchError(this.handleError('getConsultorias', []))
       );
   }
@@ -50,7 +46,7 @@ export class ApiService {
   addConsultoria (consultoria): Observable<Consultoria> {
     return this.http.post<Consultoria>(this.apiUrl, Consultoria, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
-      tap((consultoria: Consultoria) => console.log(`adicionou o Consultoria com w/ id=${consultoria._id}`)),
+      tap((consultoria: Consultoria) => console.log(`adicionou o Consultoria com w/ id=${consultoria.id}`)),
       catchError(this.handleError<Consultoria>('addConsultoria'))
     );
   }
