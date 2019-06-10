@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alunos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Alunos da Faculdade</h2>
+                </div><!--// .col-md-6 -->
+            </div><!--// .row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <table id="alunoTable" class="table table-bordered table-condensed table-striped">
+                        <thead>
+                        <tr>
+                            <th>AG</th>
+                            <th>Nome</th>                            
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div><!--// .col-md-6 -->
+
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Dados do Aluno</div>
+                        <div class="panel-body">
+                            <form id="aluno-form">
+                                <div class="form-group">
+                                    <label for="ag">AG</label>
+                                    <input type="text" name="ag" id="aluno_ag" class="form-control input-lg"
+                                           placeholder="Ag do Aluno">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" name="author" id="aluno_nome" class="form-control input-lg"
+                                           placeholder="Nome do Aluno">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" id="updateButton" class="btn btn-lg btn-primary">
+                                        Adicionar Aluno
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!--// .panel -->
+                </div><!--// .col-md -->
+            </div><!--// .row -->
+        </div><!--// .container -->
+
+        <script type="text/html" id="alunoTemplate">
+            <tr>
+                <td><%- ag %></td>
+                <td><%- nome %></td>                
+                <td>
+                    <button type='button' class='aluno-edit btn btn-default' data-id='<%- id %>'>
+                        <span class='glyphicon glyphicon-edit'></span>
+                    </button>
+                </td>
+                <td>
+                    <button type='button' class='aluno-delete btn btn-default' data-id='<%- id %>'>
+                        <span class='glyphicon glyphicon-remove'></span>
+                    </button>
+                </td>
+            </tr>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="js/aluno-form.js"></script>
+        <script src="js/aluno-table.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

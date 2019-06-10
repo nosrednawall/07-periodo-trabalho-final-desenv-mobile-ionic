@@ -1,0 +1,48 @@
+<!-- header da página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Trabalho Final <ion-icon name="logo-angular"></ion-icon> 
+      <ion-icon name="logo-android"></ion-icon>
+      <ion-icon name="logo-tux"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- conteúdo da página -->
+<ion-content>
+  <!-- card que leva a lista de consultorias -->
+  <ion-card>
+    <ion-item href="/lista" class="activated">
+      <ion-icon name="list-box" slot="start"></ion-icon>
+      <ion-label>Listar consultorias</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <!-- card que leva ao formulário para adicionar consultoria -->
+  <ion-card>
+    <ion-item href="/adicionar">
+      <ion-icon name="add" slot="start"></ion-icon>
+      <ion-label>Adicionar uma consultoria</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <!-- card que fecha a aplicação -->
+  <!-- <ion-card>
+    <ion-item href="#">
+      <ion-icon name="exit" slot="start"></ion-icon>
+      <ion-label>Sair</ion-label>
+    </ion-item>
+  </ion-card> -->
+
+  <!-- card que mostra e salva o endereco do servidor, usado para pegar as requisições rest -->
+  <ion-card>
+    <ion-item>
+      <form>
+        <ion-label position="floating">Endereço servidor</ion-label>
+        <ion-input #servidor value="{{ enderecoServidor }}" (keyup)="onKey(servidor.value)"></ion-input>
+        <ion-button slot="end" (click)="salvarEndereco(enderecoServidor)">Salvar</ion-button>
+      </form>
+    </ion-item>
+  </ion-card>
+</ion-content>

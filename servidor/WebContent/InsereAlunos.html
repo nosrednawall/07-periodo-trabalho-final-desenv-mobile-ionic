@@ -1,0 +1,45 @@
+<html>
+<head>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<H2>Insere</H2>
+	
+	AG:<br> <input type="text" name="ag" id="ag">
+	<br>
+	Nome:<br> <input type="text" name="nome" id="nome">
+	<br>
+	<br>	
+
+	<button id="ajax">chamada ajax</button>
+	
+	
+
+	<script type="text/javascript">
+	
+
+	$('#ajax').click(function() {
+		dado = {};
+		dado.ag = document.getElementById("ag").value;
+		dado.nome = document.getElementById("nome").value;
+		$.ajax({
+			type : "post",
+			dat: dado,
+			dataType : "json",
+			url : "http://localhost:8080/Rest/rest/alunos/aluno/" + dado.ag,
+			 beforeSend : function(){
+	             $("#resultado").html("ENVIANDO...");
+	      }
+		}).done(function(msg){
+			     $("#resultado").html(msg);
+	    })
+	    .fail(function(jqXHR, textStatus, msg){
+	         alert(msg);
+	    }); 		
+	});
+	</script>
+</body>
+</html>

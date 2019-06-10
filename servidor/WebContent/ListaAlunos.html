@@ -1,0 +1,65 @@
+<html>
+<head>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<H2> Lista </H2>
+	
+	<br>
+
+	<button id="ajax">chamada ajax</button>
+	<button id="json">chamada json</button>
+
+	<br>
+	
+	<p id="ags"></p>
+	<p id="nomes"></p>
+	
+
+	<script type="text/javascript">
+		$('#json').click(
+				function() {
+					$.getJSON("http://localhost:8080/Rest/rest/alunos/lista",
+							function(data) {
+								data.forEach(function(valor) {
+									console.log(valor.ag);
+									console.log(valor.nome);									
+									var ags = document.getElementById("ags").innerHTML;				
+									ags = ags + ' ' + valor.ag;
+									document.getElementById("ags").innerHTML = ags;
+									
+									var dados = document.getElementById("nomes").innerHTML;				
+									dados = dados + ' ' + valor.nome;
+									document.getElementById("nomes").innerHTML = dados;
+								});
+							});
+				});
+
+		$('#ajax').click(function() {
+			//alert('ajax');
+			$.ajax({
+				type : "GET",
+				dataType : "json",
+				url : "http://localhost:8080/Rest/rest/alunos/lista",
+				success : function(data) {
+					data.forEach(function(valor) {
+						console.log(valor.ag);
+						console.log(valor.nome);									
+						var ags = document.getElementById("ags").innerHTML;				
+						ags = ags + ' ' + valor.ag;
+						document.getElementById("ags").innerHTML = ags;
+						
+						var dados = document.getElementById("nomes").innerHTML;				
+						dados = dados + ' ' + valor.nome;
+						document.getElementById("nomes").innerHTML = dados;
+					});
+					//alert(data);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
