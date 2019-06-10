@@ -15,7 +15,7 @@ import { Consultoria } from '../entities/consultoria';
 export class ListaPage implements OnInit{
 
   /**objeto array que ficara com a colecao de consultorias */
-  public consultorias: any[] = []; //objetos fakes utilizados na aprendizagem do ionic
+  public consultorias: Consultoria[]; //objetos fakes utilizados na aprendizagem do ionic
   public dataSource: Consultoria[]; //objetos pegos do servidor
 
   /**meu json que possui uma colecao de consultorias */
@@ -30,18 +30,17 @@ export class ListaPage implements OnInit{
     private _api: ApiService ) { }
 
   ngOnInit(){ 
-    this.consultorias = JSON.parse(this.jsonString); 
-  
     this._api.getConsultorias()
     .subscribe(res => {
-      this.dataSource = res;
-      console.log(this.dataSource);
+      this.consultorias = res;
+      console.log(this.consultorias);
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
       this.isLoadingResults = false;
     });
 
+    // this.consultorias = JSON.parse(this.jsonString); 
   }
 
   /**Método mostra tela de opções para cada card */
